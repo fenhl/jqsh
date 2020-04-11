@@ -46,4 +46,4 @@ impl<T> fmt::Debug for Labeled<T> {
     }
 }
 
-pub type FilterFn = Labeled<Arc<Fn(&[Filter], Receiver, Sender) + Send + Sync>>;
+pub type FilterFn = Labeled<Arc<dyn Fn(&[Filter], Receiver, Sender) + Send + Sync>>;

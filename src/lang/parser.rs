@@ -43,10 +43,10 @@ enum CodeVariant {
 impl fmt::Debug for CodeVariant { // https://github.com/bluss/rust-itertools/issues/32
     fn fmt(&self, w: &mut fmt::Formatter) -> fmt::Result {
         match *self {
-            CodeVariant::Empty => try!(write!(w, "CodeVariant::Empty")),
-            CodeVariant::UString { ref s, ref peek_index } => try!(write!(w, "CodeVariant::UString {{ s: {:?}, peek_index: {:?} }}", s, peek_index)),
-            CodeVariant::UStringIter(_) => try!(write!(w, "CodeVariant::UStringIter(/* ... */)")),
-            CodeVariant::Mutation => try!(write!(w, "CodeVariant::Mutation"))
+            CodeVariant::Empty => write!(w, "CodeVariant::Empty")?,
+            CodeVariant::UString { ref s, ref peek_index } => write!(w, "CodeVariant::UString {{ s: {:?}, peek_index: {:?} }}", s, peek_index)?,
+            CodeVariant::UStringIter(_) => write!(w, "CodeVariant::UStringIter(/* ... */)")?,
+            CodeVariant::Mutation => write!(w, "CodeVariant::Mutation")?
         }
         Ok(())
     }
@@ -279,7 +279,7 @@ fn parse_inner<I: IntoIterator<Item = Tf>>(tf_iter: I, context: Context) -> Resu
                                             inner.push(tf.remove(idx + 1));
                                         }
                                         tf[idx] = Tf::Filter(try_filter!(Filter::Custom {
-                                            attributes: vec![try!(parse_inner(inner, context.clone()))],
+                                            attributes: vec![parse_inner(inner, context.clone())?],
                                             run: Box::new(Labeled::new("<filter group (α)>", Arc::new(|attrs, input, output| {
                                                 assert_eq!(attrs.len(), 1);
                                                 attrs[0].run(input, output)

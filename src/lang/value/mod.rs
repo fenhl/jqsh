@@ -40,56 +40,56 @@ impl fmt::Display for Value {
 
         match *self {
             Exception(ref name, ref meta) => {
-                try!(write!(w, "raise {:?}", string::String::from(name)));
+                write!(w, "raise {:?}", string::String::from(name))?;
                 if meta.len() > 0 {
-                    try!(write!(w, " {{"));
+                    write!(w, " {{")?;
                     for (i, (k, v)) in meta.iter().enumerate() {
                         if i > 0 {
-                            try!(write!(w, ", "));
+                            write!(w, ", ")?;
                         }
-                        try!(k.fmt(w));
-                        try!(write!(w, ": "));
-                        try!(v.fmt(w));
+                        k.fmt(w)?;
+                        write!(w, ": ")?;
+                        v.fmt(w)?;
                     }
-                    try!(write!(w, "}}"));
+                    write!(w, "}}")?;
                 }
             }
             Null => {
-                try!(write!(w, "null"));
+                write!(w, "null")?;
             }
             Boolean(b) => {
-                try!(write!(w, "{}", if b { "true" } else { "false" }));
+                write!(w, "{}", if b { "true" } else { "false" })?;
             }
             Number(ref n) => {
-                try!(write!(w, "{}", n));
+                write!(w, "{}", n)?;
             }
             String(ref s) => {
-                try!(write!(w, "{:?}", string::String::from(s)));
+                write!(w, "{:?}", string::String::from(s))?;
             }
             Array(ref a) => {
-                try!(write!(w, "["));
+                write!(w, "[")?;
                 for (i, item) in a.iter().enumerate() {
                     if i > 0 {
-                        try!(write!(w, ", "));
+                        write!(w, ", ")?;
                     }
-                    try!(item.fmt(w));
+                    item.fmt(w)?;
                 }
-                try!(write!(w, "]"));
+                write!(w, "]")?;
             }
             Object(ref o) => {
-                try!(write!(w, "{{"));
+                write!(w, "{{")?;
                 for (i, (k, v)) in o.iter().enumerate() {
                     if i > 0 {
-                        try!(write!(w, ", "));
+                        write!(w, ", ")?;
                     }
-                    try!(k.fmt(w));
-                    try!(write!(w, ": "));
-                    try!(v.fmt(w));
+                    k.fmt(w)?;
+                    write!(w, ": ")?;
+                    v.fmt(w)?;
                 }
-                try!(write!(w, "}}"));
+                write!(w, "}}")?;
             }
             Function => {
-                try!(write!(w, "def (...)"));
+                write!(w, "def (...)")?;
             }
         }
         Ok(())
