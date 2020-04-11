@@ -1,5 +1,9 @@
-use std::{hash, mem, vec};
-use std::iter::FromIterator;
+use std::{
+    hash,
+    iter::FromIterator,
+    mem,
+    vec
+};
 
 //TODO implement lazy objects by also including a receiver
 #[derive(Clone, Debug)]

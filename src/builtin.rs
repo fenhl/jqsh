@@ -1,8 +1,14 @@
-use std::sync::Arc;
-
-use num::{FromPrimitive, BigRational};
-
-use crate::lang::context::{Context, PrecedenceGroup};
+use {
+    std::sync::Arc,
+    num::{
+        FromPrimitive,
+        BigRational
+    },
+    crate::lang::context::{
+        Context,
+        PrecedenceGroup
+    }
+};
 
 /// The default context for interactive shell sessions.
 pub fn context() -> Context {

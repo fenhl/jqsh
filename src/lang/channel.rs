@@ -1,10 +1,18 @@
-use std::{mem, thread};
-
-use chan;
-
-use eventual::{self, Async};
-
-use crate::lang::{Context, Filter, Value};
+use {
+    std::{
+        mem,
+        thread
+    },
+    eventual::{
+        self,
+        Async
+    },
+    crate::lang::{
+        Context,
+        Filter,
+        Value
+    }
+};
 
 pub struct Sender {
     pub context: eventual::Complete<Context, ()>,

@@ -1,13 +1,29 @@
-use std::{fmt, mem};
-use std::sync::{Arc, Mutex};
-
-use itertools::{Itertools, MultiPeek};
-
-use unicode::{self, UString};
-
-use crate::lang::{Context, Filter};
-use crate::lang::context::PrecedenceGroup;
-use crate::util::Labeled;
+use {
+    std::{
+        fmt,
+        mem,
+        sync::{
+            Arc,
+            Mutex
+        }
+    },
+    itertools::{
+        Itertools,
+        MultiPeek
+    },
+    unicode::{
+        self,
+        UString
+    },
+    crate::{
+        lang::{
+            Context,
+            Filter,
+            context::PrecedenceGroup
+        },
+        util::Labeled
+    }
+};
 
 #[derive(Debug)]
 pub enum ParseError {

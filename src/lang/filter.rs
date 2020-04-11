@@ -1,11 +1,25 @@
-use unicode::UString;
-
-use eventual::Async;
-
-use crate::lang::parser::{self, Code};
-use crate::lang::value::{Value, Object};
-use crate::lang::channel::{Sender, Receiver, channel};
-use crate::util::FilterFn;
+use {
+    eventual::Async,
+    unicode::UString,
+    crate::{
+        lang::{
+            parser::{
+                self,
+                Code
+            },
+            value::{
+                Value,
+                Object
+            },
+            channel::{
+                Sender,
+                Receiver,
+                channel
+            }
+        },
+        util::FilterFn
+    }
+};
 
 #[derive(Clone, Debug)]
 pub enum Filter {

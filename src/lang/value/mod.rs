@@ -1,15 +1,21 @@
+use {
+    std::{
+        fmt,
+        hash,
+        iter::FromIterator,
+        string
+    },
+    num::BigRational,
+    unicode::UString
+};
+
 pub mod array;
 pub mod object;
 
-pub use self::array::Array;
-pub use self::object::Object;
-
-use std::{fmt, hash, string};
-use std::iter::FromIterator;
-
-use num::BigRational;
-
-use unicode::UString;
+pub use self::{
+    array::Array,
+    object::Object
+};
 
 #[derive(Clone, Debug)]
 pub enum Value {

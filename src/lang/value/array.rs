@@ -1,9 +1,14 @@
-use std::hash;
-use std::iter::FromIterator;
-use std::sync::mpsc;
-
-use crate::lang::channel::Receiver;
-use crate::lang::value::Value;
+use {
+    std::{
+        hash,
+        iter::FromIterator,
+        sync::mpsc
+    },
+    crate::lang::{
+        channel::Receiver,
+        value::Value
+    }
+};
 
 //TODO implement lazy arrays by also including a receiver
 #[derive(Clone, Debug)]

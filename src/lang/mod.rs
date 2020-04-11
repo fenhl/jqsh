@@ -4,6 +4,8 @@ pub mod filter;
 pub mod parser;
 pub mod value;
 
-pub use self::context::Context;
-pub use self::filter::Filter;
-pub use self::value::Value;
+pub use self::{
+    context::Context,
+    filter::Filter,
+    value::Value
+};

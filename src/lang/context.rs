@@ -1,10 +1,12 @@
-use std::collections::BTreeMap;
-use std::fmt;
-use std::sync::Arc;
-
-use num::BigRational;
-
-use crate::lang::Filter;
+use {
+    std::{
+        collections::BTreeMap,
+        fmt,
+        sync::Arc
+    },
+    num::BigRational,
+    crate::lang::Filter
+};
 
 #[derive(Clone, Debug)]
 pub enum PrecedenceGroup {

@@ -1,9 +1,20 @@
-use crate::lang::channel::{Sender, Receiver};
-use crate::lang::filter::Filter;
-
-use std::fmt;
-use std::ops::{Deref, DerefMut};
-use std::sync::Arc;
+use {
+    std::{
+        fmt,
+        ops::{
+            Deref,
+            DerefMut
+        },
+        sync::Arc
+    },
+    crate::lang::{
+        channel::{
+            Sender,
+            Receiver
+        },
+        filter::Filter
+    }
+};
 
 #[derive(Clone)]
 pub struct Labeled<T> {
