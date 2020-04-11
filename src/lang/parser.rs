@@ -1,6 +1,5 @@
 use {
     std::{
-        fmt,
         mem,
         sync::{
             Arc,
@@ -48,24 +47,12 @@ pub enum Token {
     Whitespace
 }
 
-//#[derive(Debug)] // https://github.com/bluss/rust-itertools/issues/32
+#[derive(Debug)]
 enum CodeVariant {
     Empty,
     UString { s: UString, peek_index: usize },
     UStringIter(MultiPeek<unicode::IntoIter>),
     Mutation
-}
-
-impl fmt::Debug for CodeVariant { // https://github.com/bluss/rust-itertools/issues/32
-    fn fmt(&self, w: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match *self {
-            CodeVariant::Empty => write!(w, "CodeVariant::Empty")?,
-            CodeVariant::UString { ref s, ref peek_index } => write!(w, "CodeVariant::UString {{ s: {:?}, peek_index: {:?} }}", s, peek_index)?,
-            CodeVariant::UStringIter(_) => write!(w, "CodeVariant::UStringIter(/* ... */)")?,
-            CodeVariant::Mutation => write!(w, "CodeVariant::Mutation")?
-        }
-        Ok(())
-    }
 }
 
 #[derive(Debug)]
