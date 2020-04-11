@@ -35,7 +35,7 @@ pub enum HashableValue {
 }
 
 impl fmt::Display for Value {
-    fn fmt(&self, w: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, w: &mut fmt::Formatter<'_>) -> fmt::Result {
         use self::Value::*;
 
         match *self {
@@ -97,7 +97,7 @@ impl fmt::Display for Value {
 }
 
 impl fmt::Display for HashableValue {
-    fn fmt(&self, w: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, w: &mut fmt::Formatter<'_>) -> fmt::Result {
         Value::from(self).fmt(w)
     }
 }

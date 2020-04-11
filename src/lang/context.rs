@@ -21,7 +21,7 @@ pub struct Context {
 }
 
 impl fmt::Debug for Context {
-    fn fmt(&self, w: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, w: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(w, "Context {{ filter_allowed: [Fn(&Filter) -> bool], operators: {:?} }}", self.operators)
     }
 }

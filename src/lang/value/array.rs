@@ -69,7 +69,7 @@ impl<T> Iterator for IntoIter<T> {
     }
 }
 
-pub struct Iter<'a, T: 'a> {
+pub struct Iter<'a, T> {
     array: &'a Array<T>,
     index: usize
 }

@@ -27,7 +27,7 @@ impl<K: Eq, V> Object<K, V> {
         None
     }
 
-    pub fn iter(&self) -> Iter<K, V> {
+    pub fn iter(&self) -> Iter<'_, K, V> {
         Iter {
             object: self,
             index: 0
@@ -105,7 +105,7 @@ impl<'a, K: Eq, V> IntoIterator for &'a Object<K, V> {
     }
 }
 
-pub struct Iter<'a, K: 'a + Eq, V: 'a> {
+pub struct Iter<'a, K: Eq, V> {
     object: &'a Object<K, V>,
     index: usize
 }

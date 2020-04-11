@@ -41,7 +41,7 @@ enum CodeVariant {
 }
 
 impl fmt::Debug for CodeVariant { // https://github.com/bluss/rust-itertools/issues/32
-    fn fmt(&self, w: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, w: &mut fmt::Formatter<'_>) -> fmt::Result {
         match *self {
             CodeVariant::Empty => write!(w, "CodeVariant::Empty")?,
             CodeVariant::UString { ref s, ref peek_index } => write!(w, "CodeVariant::UString {{ s: {:?}, peek_index: {:?} }}", s, peek_index)?,

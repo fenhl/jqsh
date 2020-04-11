@@ -1,14 +1,15 @@
-extern crate eventual;
-extern crate jqsh;
-extern crate readline;
-extern crate unicode;
-
-use eventual::Async;
-
-use unicode::UString;
-
-use jqsh::builtin;
-use jqsh::lang::{Filter, channel, parser};
+use {
+    eventual::Async,
+    unicode::UString,
+    jqsh::{
+        builtin,
+        lang::{
+            Filter,
+            channel,
+            parser
+        }
+    }
+};
 
 fn main() {
     let mut repl_context = builtin::context();
