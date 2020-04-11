@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use num::{FromPrimitive, BigRational};
 
-use lang::context::{Context, PrecedenceGroup};
+use crate::lang::context::{Context, PrecedenceGroup};
 
 /// The default context for interactive shell sessions.
 pub fn context() -> Context {

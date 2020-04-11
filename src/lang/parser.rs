@@ -5,9 +5,9 @@ use itertools::{Itertools, MultiPeek};
 
 use unicode::{self, UString};
 
-use lang::{Context, Filter};
-use lang::context::PrecedenceGroup;
-use util::Labeled;
+use crate::lang::{Context, Filter};
+use crate::lang::context::PrecedenceGroup;
+use crate::util::Labeled;
 
 #[derive(Debug)]
 pub enum ParseError {

@@ -20,7 +20,7 @@ fn main() {
             Filter::Empty
         });
         let channel::Receiver { context, values } = channel::Receiver::empty(repl_context).filter(&filter);
-        repl_context = context.await().expect("failed to get repl output context");
+        repl_context = context.r#await().expect("failed to get repl output context");
         for value in values {
             println!("{}", value);
         }

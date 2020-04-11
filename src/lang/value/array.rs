@@ -2,8 +2,8 @@ use std::hash;
 use std::iter::FromIterator;
 use std::sync::mpsc;
 
-use lang::channel::Receiver;
-use lang::value::Value;
+use crate::lang::channel::Receiver;
+use crate::lang::value::Value;
 
 //TODO implement lazy arrays by also including a receiver
 #[derive(Clone, Debug)]

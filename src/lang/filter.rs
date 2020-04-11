@@ -2,10 +2,10 @@ use unicode::UString;
 
 use eventual::Async;
 
-use lang::parser::{self, Code};
-use lang::value::{Value, Object};
-use lang::channel::{Sender, Receiver, channel};
-use util::FilterFn;
+use crate::lang::parser::{self, Code};
+use crate::lang::value::{Value, Object};
+use crate::lang::channel::{Sender, Receiver, channel};
+use crate::util::FilterFn;
 
 #[derive(Clone, Debug)]
 pub enum Filter {
@@ -30,7 +30,7 @@ impl Filter {
                 let (lhs_input, mut input) = input.split();
                 let Receiver { context: lhs_ctxt, values: _ } = lhs_input.filter_sync(&lhs); // the values output by lhs are discarded
                 // parse the right-hand filter using the lhs output context
-                let lhs_ctxt = lhs_ctxt.await().expect("failed to get context of `;;` left operand");
+                let lhs_ctxt = lhs_ctxt.r#await().expect("failed to get context of `;;` left operand");
                 let rhs = match parser::parse(remaining_code.clone(), lhs_ctxt.clone()) {
                     Ok(f) => f,
                     Err(_) => {
@@ -52,7 +52,7 @@ impl Filter {
             Empty => {
                 let Receiver { context: in_ctxt, values: _ } = input;
                 let Sender { context, values: _ } = output;
-                context.complete(in_ctxt.await().expect("failed to get input context"));
+                context.complete(in_ctxt.r#await().expect("failed to get input context"));
             }
         }
     }

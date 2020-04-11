@@ -1,5 +1,5 @@
-use lang::channel::{Sender, Receiver};
-use lang::filter::Filter;
+use crate::lang::channel::{Sender, Receiver};
+use crate::lang::filter::Filter;
 
 use std::fmt;
 use std::ops::{Deref, DerefMut};

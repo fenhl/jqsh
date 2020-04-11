@@ -4,7 +4,7 @@ use std::sync::Arc;
 
 use num::BigRational;
 
-use lang::Filter;
+use crate::lang::Filter;
 
 #[derive(Clone, Debug)]
 pub enum PrecedenceGroup {

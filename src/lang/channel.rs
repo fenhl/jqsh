@@ -4,7 +4,7 @@ use chan;
 
 use eventual::{self, Async};
 
-use lang::{Context, Filter, Value};
+use crate::lang::{Context, Filter, Value};
 
 pub struct Sender {
     pub context: eventual::Complete<Context, ()>,
@@ -21,7 +21,7 @@ pub struct Receiver {
 impl Receiver {
     /// A closed receiver with no values.
     pub fn empty(context: Context) -> Receiver {
-        let (_, val_rx) = chan::async();
+        let (_, val_rx) = chan::r#async();
         Receiver {
             context: eventual::Future::of(context),
             values: val_rx
@@ -47,7 +47,7 @@ impl Receiver {
     ///
     /// Returns `dst`'s context future sender.
     pub fn forward_values(&mut self, dst: Sender) -> eventual::Complete<Context, ()> {
-        let (_, val_rx) = chan::async();
+        let (_, val_rx) = chan::r#async();
         let vals_to_forward = mem::replace(&mut self.values, val_rx);
         let Sender { context, values } = dst;
         thread::spawn(move || {
@@ -64,7 +64,7 @@ impl Receiver {
         let (Sender { context: ctxt_tx2, values: val_tx2 }, rx2) = channel();
         let Receiver { context, values } = self;
         thread::spawn(move || {
-            let context = context.await().expect("failed to split contexts");
+            let context = context.r#await().expect("failed to split contexts");
             ctxt_tx1.complete(context.clone());
             ctxt_tx2.complete(context);
         });
@@ -89,7 +89,7 @@ impl IntoIterator for Receiver {
 
 pub fn channel() -> (Sender, Receiver) {
     let (ctxt_tx, ctxt_fut) = eventual::Future::pair();
-    let (val_tx, val_rx) = chan::async();
+    let (val_tx, val_rx) = chan::r#async();
     let tx = Sender {
         context: ctxt_tx,
         values: val_tx
