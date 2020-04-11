@@ -20,11 +20,15 @@ path = "src/lib.rs"
 [dependencies]
 chan = "*"
 eventual = "*"
-itertools = "*"
+#itertools = "*"
 num = "*"
 
+[dependencies.itertools]
+git = "https://github.com/fenhl/itertools"
+branch = "multipeek-method"
+
 [dependencies.readline]
-git = "https://github.com/shaleh/rust-readline.git"
+git = "https://github.com/shaleh/rust-readline"
 
 [dependencies.unicode]
-git = "https://github.com/fenhl/rust-unicode.git"
+git = "https://github.com/fenhl/rust-unicode"
