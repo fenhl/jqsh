@@ -5,6 +5,7 @@ authors = [
     "madmalik <matthias.tellen@gmail.com>",
     "Fenhl <fenhl@fenhl.net>"
 ]
+edition = "2018"
 
 [[bin]]
 name = "jqsh"
